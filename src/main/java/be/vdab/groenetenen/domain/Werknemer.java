@@ -11,16 +11,19 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "werknemers")
+@NamedEntityGraph(name = Werknemer.MET_FILIAAL, attributeNodes = @NamedAttributeNode("filiaal"))
 public class Werknemer {
+
+    public static final String MET_FILIAAL="Werknemer.metFiliaal";
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @NotBlank
-    private String wvoornaam;
+    private String voornaam;
 
     @NotBlank
-    private String famialienaam;
+    private String familienaam;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "filiaalId")
@@ -40,12 +43,12 @@ public class Werknemer {
         return id;
     }
 
-    public String getWvoornaam() {
-        return wvoornaam;
+    public String getVoornaam() {
+        return voornaam;
     }
 
-    public String getFamialienaam() {
-        return famialienaam;
+    public String getFamilienaam() {
+        return familienaam;
     }
 
     public Filiaal getFiliaal() {

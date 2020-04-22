@@ -16,7 +16,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "filialen")
-class Filiaal {
+public class Filiaal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

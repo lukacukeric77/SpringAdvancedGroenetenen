@@ -1,17 +1,20 @@
 package be.vdab.groenetenen.forms;
 
+import be.vdab.groenetenen.constraints.Postcode;
+import be.vdab.groenetenen.constraints.VanTotPostcodeFormVanKleinerDanOfGelijkAanTot;
 import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.NotNull;
 
+@VanTotPostcodeFormVanKleinerDanOfGelijkAanTot
 public class VanTotPostcodeForm {
 
     @NotNull
-    @Range(min = 1000, max = 9999)
+    @Postcode
     private final Integer van;
 
     @NotNull
-    @Range(min = 1000, max = 9999)
+    @Postcode
     private final Integer tot;
 
     public VanTotPostcodeForm(Integer van, Integer tot) {

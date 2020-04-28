@@ -1,5 +1,6 @@
 package be.vdab.groenetenen.domain;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.Access;
@@ -7,9 +8,12 @@ import javax.persistence.AccessType;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 
 @Embeddable
 @Access(AccessType.FIELD)
+@XmlAccessorType(XmlAccessType.FIELD) @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Adres {
 
     @NotBlank

@@ -1,5 +1,8 @@
 package be.vdab.groenetenen.domain;
 
+import be.vdab.groenetenen.adapters.LocalDateAdapter;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
@@ -9,6 +12,11 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Collections;
@@ -16,6 +24,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "filialen")
+@XmlRootElement(name = "filiaal")
+@XmlAccessorType(XmlAccessType.FIELD) @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Filiaal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +44,7 @@ public class Filiaal {
 
     @DateTimeFormat(style = "S-")
     @NotNull
+    @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     private LocalDate inGebruikName;
 
     @Valid
@@ -44,6 +55,7 @@ public class Filiaal {
     private long versie;
 
     @OneToMany(mappedBy = "filiaal")
+    @XmlTransient @JsonIgnore
     private Set<Werknemer> werknemers;
 
     protected Filiaal() {

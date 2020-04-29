@@ -4,11 +4,13 @@ import be.vdab.groenetenen.domain.Filiaal;
 import be.vdab.groenetenen.exceptions.FiliaalHeeftNogWerknemersException;
 import be.vdab.groenetenen.exceptions.FiliaalNietGevonedenException;
 import be.vdab.groenetenen.services.FiliaalService;
+import javafx.application.Application;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.EntityLinks;
 import org.springframework.hateoas.server.ExposesResourceFor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +20,7 @@ import java.util.Optional;
 
 @RestController
 @ExposesResourceFor(Filiaal.class)
-@RequestMapping("/filialen")
+@RequestMapping(value = "/filialen")
 class FiliaalRestController {
 
     private final FiliaalService service;

@@ -29,13 +29,13 @@ class FiliaalRestController {
         this.entityLinks = entityLinks;
     }
 
-    @GetMapping("{filiaal}")
-    Filiaal get(@PathVariable Optional<Filiaal> filiaal){
-        if (filiaal.isPresent()){
-            return filiaal.get();
-        }
-        throw new FiliaalNietGevonedenException();
-    }
+//    @GetMapping("{filiaal}")
+//    Filiaal get(@PathVariable Optional<Filiaal> filiaal){
+//        if (filiaal.isPresent()){
+//            return filiaal.get();
+//        }
+//        throw new FiliaalNietGevonedenException();
+//    }
 
     @ExceptionHandler(FiliaalNietGevonedenException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
@@ -88,12 +88,17 @@ class FiliaalRestController {
         service.update(filiaal);
     }
 
-//    @GetMapping("{filiaal}")
-//    FiliaalModel get(@PathVariable Optional<Filiaal> filiaal){
-//        if (filiaal.isPresent()){
-//            return new FiliaalModel(filiaal.get(), entityLinks);
-//        }
-//        throw new FiliaalNietGevonedenException();
-//    }
+    @GetMapping("{filiaal}")
+    FiliaalModel get(@PathVariable Optional<Filiaal> filiaal){
+        if (filiaal.isPresent()){
+            return new FiliaalModel(filiaal.get(), entityLinks);
+        }
+        throw new FiliaalNietGevonedenException();
+    }
+
+    @GetMapping
+    FilialenModel findAll(){
+        return new FilialenModel(service.findAll(), entityLinks);
+    }
 
 }

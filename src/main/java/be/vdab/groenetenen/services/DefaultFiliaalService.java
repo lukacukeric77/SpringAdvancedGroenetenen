@@ -40,4 +40,9 @@ public class DefaultFiliaalService implements FiliaalService{
     public void update(Filiaal filiaal) {
         repository.save(filiaal);
     }
+
+    @Override
+    public List<Filiaal> findAll() {
+        return repository.findAll();
+    }
 }

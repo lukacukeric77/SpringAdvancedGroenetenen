@@ -19,7 +19,7 @@
     </tr>
     </tbody>
 </table>
-K
+
 <p class="pagineren">
         <span th:each="pageNr:${#numbers.sequence(1, page.totalPages)}">
             <span th:if="${pageNr} -1 == ${page.number}" th:text="${pageNr}"></span>

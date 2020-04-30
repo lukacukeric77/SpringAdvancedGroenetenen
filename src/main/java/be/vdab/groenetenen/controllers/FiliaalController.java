@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
-@RequestMapping(path = "filialen", produces = MediaType.TEXT_XML_VALUE)
+@RequestMapping(path = "filialen", produces = MediaType.TEXT_HTML_VALUE)
 class FiliaalController {
 
     private final FiliaalService service;

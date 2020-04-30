@@ -29,7 +29,7 @@ class FiliaalRestControllerTest extends AbstractTransactionalJUnit4SpringContext
     @Test
     void filiaalLezenDatNietBestaat() throws Exception{
         mvc.perform(get("/filialen/-1")
-        .accept(MediaType.APPLICATION_XML))
+        .accept(MediaType.APPLICATION_JSON))
         .andExpect(status().isNotFound());
     }
 

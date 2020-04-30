@@ -11,7 +11,8 @@
     <dt>Postcode</dt><dd th:text="*{adres.postcode}"></dd>
     <dt>Gemeente</dt><dd th:text="*{adres.gemeente}"></dd>
     <dt>Type</dt><dd th:text="*{hoofdFiliaal} ? 'Hoofdfiliaal' : 'Bijfiliaal'"></dd>
-    <dt>Waarde gebouw</dt><dd th:text="*{{waardeGebouw}}"></dd>
+    <dt>Waarde gebouw</dt><dd> <span th:text="*{{waardeGebouw}}"></span>
+        <a th:href="@{/euro/{euro}/naardollar(euro=*{waardeGebouw})}">convert to $</a></dd>
     <dt>In gebruikname</dt><dd th:text="*{{inGebruikName}}"></dd>
 </dl>
 

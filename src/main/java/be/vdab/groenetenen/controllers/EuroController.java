@@ -2,7 +2,6 @@ package be.vdab.groenetenen.controllers;
 
 import be.vdab.groenetenen.exceptions.KanKoersNietLezenException;
 import be.vdab.groenetenen.services.EuroService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

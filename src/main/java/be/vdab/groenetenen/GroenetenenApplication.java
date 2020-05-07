@@ -12,6 +12,9 @@ public class GroenetenenApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(GroenetenenApplication.class, args);
+
+//        System.out.println(System.getProperty("java.home"));
+
     }
 
 }

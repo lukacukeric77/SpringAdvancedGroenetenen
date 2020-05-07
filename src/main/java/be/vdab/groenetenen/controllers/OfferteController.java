@@ -2,6 +2,7 @@ package be.vdab.groenetenen.controllers;
 
 import be.vdab.groenetenen.domain.Offerte;
 import be.vdab.groenetenen.services.OfferteService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.DataBinder;
 import org.springframework.validation.Errors;
@@ -9,6 +10,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("offertes")
@@ -42,13 +46,21 @@ class OfferteController {
     }
 
     @PostMapping(value = "toevoegen", params = "opslaan")
-    public String create(@Validated(Offerte.Stap2.class) Offerte offerte, Errors errors, SessionStatus session){
+    public String create(@Validated(Offerte.Stap2.class) Offerte offerte, Errors errors, SessionStatus session, HttpServletRequest request){
         if (errors.hasErrors()){
             return "offerteStap2";
         }
-        service.create(offerte);
+        String offertesURL = request.getRequestURL().toString().replace("toevoegen", "");
+        service.create(offerte, offertesURL);
         session.setComplete();
         return "redirect:/";
+    }
+
+    @GetMapping("{optionalOfferte}")
+    public ModelAndView read(@PathVariable Optional<Offerte> optionalOfferte){
+        ModelAndView modelAndView = new ModelAndView("offerte");
+        optionalOfferte.ifPresent(offerte -> modelAndView.addObject("offer", offerte));
+        return modelAndView;
     }
 
 }

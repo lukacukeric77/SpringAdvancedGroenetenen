@@ -4,4 +4,5 @@ import be.vdab.groenetenen.domain.Offerte;
 
 public interface OfferteService {
     void create(Offerte offerte, String offertesURL);
+    void aantalOffertesMail();
 }
